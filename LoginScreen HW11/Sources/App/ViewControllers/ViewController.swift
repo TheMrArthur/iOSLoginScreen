@@ -114,6 +114,34 @@ class ViewController: UIViewController {
         return signInStack
     }()
 
+    private let lineViewLabel: UILabel = {
+        let lineViewLabel = UILabel()
+        lineViewLabel.text = "or connect with"
+        lineViewLabel.textAlignment = .center
+        lineViewLabel.textColor = UIColor.white
+        lineViewLabel.alpha = 0.5
+        lineViewLabel.translatesAutoresizingMaskIntoConstraints = false
+        return lineViewLabel
+    }()
+
+    private let lineViewFirst: UIView = {
+        let lineViewFirst = UIView()
+        lineViewFirst.backgroundColor = .white
+        lineViewFirst.layer.cornerRadius = 2
+        lineViewFirst.alpha = 0.5
+        lineViewFirst.translatesAutoresizingMaskIntoConstraints = false
+        return lineViewFirst
+    }()
+
+    private let lineViewSecond: UIView = {
+        let lineViewSecond = UIView()
+        lineViewSecond.backgroundColor = .white
+        lineViewSecond.layer.cornerRadius = 2
+        lineViewSecond.alpha = 0.5
+        lineViewSecond.translatesAutoresizingMaskIntoConstraints = false
+        return lineViewSecond
+    }()
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -133,7 +161,9 @@ class ViewController: UIViewController {
         view.addSubview(signInStack)
         signInStack.addArrangedSubview(loginButton)
         signInStack.addArrangedSubview(passwordResetButton)
-
+        view.addSubview(lineViewFirst)
+        view.addSubview(lineViewSecond)
+        view.addSubview(lineViewLabel)
     }
 
     private func setupLayout() {
@@ -162,6 +192,25 @@ class ViewController: UIViewController {
             make.leading.equalTo(textFieldStack.snp.leading)
             make.trailing.equalTo(textFieldStack.snp.trailing)
             make.bottom.equalTo(signInStack.snp.top).offset(100)
+        }
+
+        lineViewLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(view)
+            make.bottom.equalTo(view.safeAreaInsets.bottom).inset(170)
+        }
+
+        lineViewFirst.snp.makeConstraints { make in
+            make.height.equalTo(1)
+            make.leading.equalTo(view).offset(50)
+            make.trailing.equalTo(lineViewLabel.snp.leading).offset(-10)
+            make.bottom.equalTo(lineViewLabel.snp.bottom).inset(8)
+        }
+
+        lineViewSecond.snp.makeConstraints { make in
+            make.height.equalTo(1)
+            make.trailing.equalTo(view).inset(50)
+            make.leading.equalTo(lineViewLabel.snp.trailing).offset(10)
+            make.bottom.equalTo(lineViewLabel.snp.bottom).inset(8)
         }
     }
 
