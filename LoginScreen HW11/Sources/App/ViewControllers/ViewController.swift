@@ -77,6 +77,43 @@ class ViewController: UIViewController {
         return textFieldStack
     }()
 
+    private lazy var loginButton: UIButton = {
+        let loginButton = UIButton(type: .system)
+        loginButton.backgroundColor = .systemIndigo
+        loginButton.alpha = 0.8
+        loginButton.setTitle("Login", for: .normal)
+        loginButton.setTitleColor(UIColor.white, for: .normal)
+        loginButton.layer.cornerRadius = 20
+        loginButton.layer.shadowColor = UIColor.black.cgColor
+        loginButton.layer.shadowOpacity = 0.3
+        loginButton.layer.shadowOffset = .zero
+        loginButton.layer.shadowRadius = 5
+        loginButton.layer.shouldRasterize = true
+        loginButton.layer.rasterizationScale = UIScreen.main.scale
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
+        return loginButton
+    }()
+
+    private lazy var passwordResetButton: UIButton = {
+        let passwordResetButton = UIButton(type: .system)
+        passwordResetButton.setTitle("Forgot your password?", for: .normal)
+        passwordResetButton.setTitleColor(UIColor.white, for: .normal)
+        passwordResetButton.translatesAutoresizingMaskIntoConstraints = false
+        passwordResetButton.addTarget(self, action: #selector(resetPasswordButtonPressed), for: .touchUpInside)
+        return passwordResetButton
+    }()
+
+    private let signInStack: UIStackView = {
+        let signInStack = UIStackView()
+        signInStack.axis = .vertical
+        signInStack.distribution = .fillEqually
+        signInStack.alignment = .fill
+        signInStack.spacing = 20
+        signInStack.translatesAutoresizingMaskIntoConstraints = false
+        return signInStack
+    }()
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -93,6 +130,10 @@ class ViewController: UIViewController {
         view.addSubview(textFieldStack)
         textFieldStack.addArrangedSubview(textFieldUsername)
         textFieldStack.addArrangedSubview(textFieldPassword)
+        view.addSubview(signInStack)
+        signInStack.addArrangedSubview(loginButton)
+        signInStack.addArrangedSubview(passwordResetButton)
+
     }
 
     private func setupLayout() {
@@ -115,9 +156,24 @@ class ViewController: UIViewController {
             make.trailing.equalTo(view).inset(50)
             make.bottom.equalTo(textFieldStack.snp.top).offset(100)
         }
+
+        signInStack.snp.makeConstraints { make in
+            make.top.equalTo(textFieldStack.snp.bottom).offset(50)
+            make.leading.equalTo(textFieldStack.snp.leading)
+            make.trailing.equalTo(textFieldStack.snp.trailing)
+            make.bottom.equalTo(signInStack.snp.top).offset(100)
+        }
     }
 
     // MARK: - Actions
 
+    @objc private func loginButtonPressed() {
+        print("**Hello**")
+    }
+
+    @objc private func resetPasswordButtonPressed() {
+        print("Reset your password?")
+    }
+    
 }
 
