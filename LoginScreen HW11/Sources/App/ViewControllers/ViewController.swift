@@ -142,6 +142,68 @@ class ViewController: UIViewController {
         return lineViewSecond
     }()
 
+    private lazy var facebookButton: UIButton = {
+        let facebookButton = UIButton(type: .system)
+        facebookButton.backgroundColor = .systemBlue
+        facebookButton.alpha = 0.7
+        facebookButton.setTitle("Facebook", for: .normal)
+        facebookButton.setTitleColor(UIColor.white, for: .normal)
+        facebookButton.layer.cornerRadius = 18
+        facebookButton.contentHorizontalAlignment = .center
+        facebookButton.layer.shadowColor = UIColor.black.cgColor
+        facebookButton.layer.shadowOpacity = 0.3
+        facebookButton.layer.shadowOffset = .zero
+        facebookButton.layer.shadowRadius = 2
+        facebookButton.layer.shouldRasterize = true
+        facebookButton.layer.rasterizationScale = UIScreen.main.scale
+        facebookButton.translatesAutoresizingMaskIntoConstraints = false
+        facebookButton.addTarget(self, action: #selector(facebookButtonPressed), for: .touchUpInside)
+        return facebookButton
+    }()
+
+    private let facebookIcon: UIImageView = {
+        let facebookIcon = UIImageView()
+        facebookIcon.image = UIImage(named: "facebookIcon")
+        facebookIcon.translatesAutoresizingMaskIntoConstraints = false
+        return facebookIcon
+    }()
+
+    private lazy var twitterButton: UIButton = {
+        let twitterButton = UIButton(type: .system)
+        twitterButton.backgroundColor = .systemIndigo
+        twitterButton.alpha = 0.7
+        twitterButton.setTitle("Twitter", for: .normal)
+        twitterButton.setTitleColor(UIColor.white, for: .normal)
+        twitterButton.layer.cornerRadius = 18
+        twitterButton.contentHorizontalAlignment = .center
+        twitterButton.layer.shadowColor = UIColor.black.cgColor
+        twitterButton.layer.shadowOpacity = 0.3
+        twitterButton.layer.shadowOffset = .zero
+        twitterButton.layer.shadowRadius = 2
+        twitterButton.layer.shouldRasterize = true
+        twitterButton.layer.rasterizationScale = UIScreen.main.scale
+        twitterButton.translatesAutoresizingMaskIntoConstraints = false
+        twitterButton.addTarget(self, action: #selector(twitterButtonPressed), for: .touchUpInside)
+        return twitterButton
+    }()
+
+    private let twitterIcon: UIImageView = {
+        let twitterIcon = UIImageView()
+        twitterIcon.image = UIImage(named: "twitterIcon")
+        twitterIcon.translatesAutoresizingMaskIntoConstraints = false
+        return twitterIcon
+    }()
+
+    private let otherConnectionButtonStack: UIStackView = {
+        let otherConnectionButtonStack = UIStackView()
+        otherConnectionButtonStack.axis = .horizontal
+        otherConnectionButtonStack.distribution = .fillEqually
+        otherConnectionButtonStack.alignment = .fill
+        otherConnectionButtonStack.spacing = 10
+        otherConnectionButtonStack.translatesAutoresizingMaskIntoConstraints = false
+        return otherConnectionButtonStack
+    }()
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -164,6 +226,11 @@ class ViewController: UIViewController {
         view.addSubview(lineViewFirst)
         view.addSubview(lineViewSecond)
         view.addSubview(lineViewLabel)
+        view.addSubview(otherConnectionButtonStack)
+        facebookButton.addSubview(facebookIcon)
+        twitterButton.addSubview(twitterIcon)
+        otherConnectionButtonStack.addArrangedSubview(facebookButton)
+        otherConnectionButtonStack.addArrangedSubview(twitterButton)
     }
 
     private func setupLayout() {
@@ -212,6 +279,27 @@ class ViewController: UIViewController {
             make.leading.equalTo(lineViewLabel.snp.trailing).offset(10)
             make.bottom.equalTo(lineViewLabel.snp.bottom).inset(8)
         }
+
+        otherConnectionButtonStack.snp.makeConstraints { make in
+            make.top.equalTo(lineViewLabel.snp.bottom).offset(20)
+            make.leading.equalTo(lineViewFirst.snp.leading)
+            make.trailing.equalTo(lineViewSecond.snp.trailing)
+            make.bottom.equalTo(otherConnectionButtonStack.snp.top).offset(35)
+        }
+
+        facebookIcon.snp.makeConstraints { make in
+            make.top.equalTo(facebookButton.snp.top).inset(7)
+            make.bottom.equalTo(facebookButton.snp.bottom).inset(7)
+            make.leading.equalTo(facebookButton.snp.leading).offset(8)
+            make.trailing.equalTo(facebookButton.snp.leading).offset(31)
+        }
+
+        twitterIcon.snp.makeConstraints { make in
+            make.top.equalTo(twitterButton.snp.top).inset(7)
+            make.bottom.equalTo(twitterButton.snp.bottom).inset(7)
+            make.leading.equalTo(twitterButton.snp.leading).offset(8)
+            make.trailing.equalTo(twitterButton.snp.leading).offset(31)
+        }
     }
 
     // MARK: - Actions
@@ -222,6 +310,14 @@ class ViewController: UIViewController {
 
     @objc private func resetPasswordButtonPressed() {
         print("Reset your password?")
+    }
+    
+    @objc private func facebookButtonPressed() {
+        print("Go to facebook")
+    }
+
+    @objc private func twitterButtonPressed() {
+        print("Go to twitter")
     }
     
 }
