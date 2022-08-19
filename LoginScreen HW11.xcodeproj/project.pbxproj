@@ -54,14 +54,70 @@
 		EC06EDAB28AFB3E20017681E /* LoginScreen HW11 */ = {
 			isa = PBXGroup;
 			children = (
-				EC06EDAC28AFB3E20017681E /* AppDelegate.swift */,
-				EC06EDAE28AFB3E20017681E /* SceneDelegate.swift */,
-				EC06EDB028AFB3E20017681E /* ViewController.swift */,
-				EC06EDB528AFB3E40017681E /* Assets.xcassets */,
-				EC06EDB728AFB3E40017681E /* LaunchScreen.storyboard */,
-				EC06EDBA28AFB3E40017681E /* Info.plist */,
+				EC06EDC028AFB8D00017681E /* Resources */,
+				EC06EDC128AFB8F10017681E /* Sources */,
 			);
 			path = "LoginScreen HW11";
+			sourceTree = "<group>";
+		};
+		EC06EDC028AFB8D00017681E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EC06EDB528AFB3E40017681E /* Assets.xcassets */,
+				EC06EDC228AFB9130017681E /* Configuration */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EC06EDC128AFB8F10017681E /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				EC06EDC428AFB9320017681E /* App */,
+				EC06EDC328AFB9240017681E /* Storyboards */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		EC06EDC228AFB9130017681E /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				EC06EDBA28AFB3E40017681E /* Info.plist */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		EC06EDC328AFB9240017681E /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				EC06EDB728AFB3E40017681E /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		EC06EDC428AFB9320017681E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				EC06EDAC28AFB3E20017681E /* AppDelegate.swift */,
+				EC06EDAE28AFB3E20017681E /* SceneDelegate.swift */,
+				EC06EDC528AFB93F0017681E /* ViewControllers */,
+				EC06EDC628AFB9580017681E /* Extensions */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		EC06EDC528AFB93F0017681E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EC06EDB028AFB3E20017681E /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		EC06EDC628AFB9580017681E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
