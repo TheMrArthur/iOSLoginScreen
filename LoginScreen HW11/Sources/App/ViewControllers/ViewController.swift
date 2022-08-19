@@ -204,6 +204,27 @@ class ViewController: UIViewController {
         return otherConnectionButtonStack
     }()
 
+    private let createAccountLabel: UILabel = {
+        let createAccountLabel = UILabel()
+        createAccountLabel.text = "Don`t have account?"
+        createAccountLabel.font = UIFont.systemFont(ofSize: 14)
+        createAccountLabel.textAlignment = .center
+        createAccountLabel.textColor = UIColor.white
+        createAccountLabel.alpha = 0.5
+        createAccountLabel.translatesAutoresizingMaskIntoConstraints = false
+        return createAccountLabel
+    }()
+
+    private lazy var signUpButton: UIButton = {
+        let signUpButton = UIButton(type: .system)
+        signUpButton.setTitle("Sign up", for: .normal)
+        signUpButton.setTitleColor(UIColor.blue, for: .normal)
+        signUpButton.alpha = 0.45
+        signUpButton.translatesAutoresizingMaskIntoConstraints = false
+        signUpButton.addTarget(self, action: #selector(signUpButtonPressed), for: .touchUpInside)
+        return signUpButton
+    }()
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -231,6 +252,8 @@ class ViewController: UIViewController {
         twitterButton.addSubview(twitterIcon)
         otherConnectionButtonStack.addArrangedSubview(facebookButton)
         otherConnectionButtonStack.addArrangedSubview(twitterButton)
+        view.addSubview(createAccountLabel)
+        view.addSubview(signUpButton)
     }
 
     private func setupLayout() {
@@ -300,6 +323,17 @@ class ViewController: UIViewController {
             make.leading.equalTo(twitterButton.snp.leading).offset(8)
             make.trailing.equalTo(twitterButton.snp.leading).offset(31)
         }
+
+        createAccountLabel.snp.makeConstraints { make in
+            make.top.equalTo(otherConnectionButtonStack.snp.bottom).offset(25)
+            make.trailing.equalTo(view.snp.centerX)
+        }
+
+        signUpButton.snp.makeConstraints { make in
+            make.top.equalTo(otherConnectionButtonStack.snp.bottom).offset(18)
+            make.leading.equalTo(view.snp.centerX)
+            make.trailing.equalTo(otherConnectionButtonStack.snp.trailing).offset(-70)
+        }
     }
 
     // MARK: - Actions
@@ -318,6 +352,10 @@ class ViewController: UIViewController {
 
     @objc private func twitterButtonPressed() {
         print("Go to twitter")
+    }
+
+    @objc private func signUpButtonPressed() {
+        print("Create new account for you?")
     }
     
 }
