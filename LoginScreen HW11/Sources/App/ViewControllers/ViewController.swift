@@ -20,6 +20,16 @@ class ViewController: UIViewController {
         return backgroundImageView
     }()
 
+    private let loginLabel: UILabel = {
+        let loginLabel = UILabel()
+        loginLabel.text = "Login"
+        loginLabel.textAlignment = .center
+        loginLabel.font = UIFont(name: "noteworthy", size: 50)
+        loginLabel.textColor = UIColor.white
+        loginLabel.translatesAutoresizingMaskIntoConstraints = false
+        return loginLabel
+    }()
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -32,6 +42,7 @@ class ViewController: UIViewController {
 
     private func setupHierarchy() {
         view.addSubview(backgroundImageView)
+        view.addSubview(loginLabel)
     }
 
     private func setupLayout() {
@@ -40,6 +51,12 @@ class ViewController: UIViewController {
             make.bottom.equalToSuperview()
             make.trailing.equalToSuperview()
             make.leading.equalToSuperview()
+        }
+
+        loginLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(view)
+            make.top.equalTo(view.safeAreaInsets.top).offset(20)
+            make.bottom.equalTo(loginLabel.snp.top).offset(100)
         }
     }
 
